@@ -14,7 +14,7 @@
 
 \title{Détection des feu de forets avec un réseau de neurones embarqué}                             % Title
 \author{Maxime De Wolf\\
-		Dimitri Waelkensx}                               % Author
+		Dimitri Waelkens}                               % Author
 \date{\today}                                           % Date
 
 \makeatletter
@@ -61,21 +61,22 @@
    		
    	\end{titlepage}
    	
-   	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   	\section{Objectif}
    	
-   	\tableofcontents
-   	\pagebreak
+   		Dans le cadre du cours de \textit{Défi en Intelligence Artificielle}, il nous a été demandé d'entraîner un réseau de neurones afin de pouvoir détecter les feux de forêts grâce à celui-ci.\\
+   		Plus précisément, notre réseau de neurones doit être capable de classer des images dans trois catégories distinctes: \texttt{fire, start\_fire, no\_fire}. Ces catégories représentent respectivement les images montrant un incendie, les images montrant un début d'incendie -c'est à dire une image qui contiennent beaucoup de fumée- et les images ne présentant aucune trace d'incendie.
+   		
+   	\section{Structure du réseau}
    	
-   	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   		Comme base de notre réseau, nous avons choisis un réseau de neurones \textbf{Xception} pré-entraîné grâce à \textit{Imagenet}. Nous rajoutons ensuite une couche de \textit{pooling} ainsi qu'une couche \textit{fully-connected}. Ensuite nous entraînons notre réseau de neurones en deux étapes. 
+   		
+   		La première étape consiste à entraîner les couches que nous avons rajoutées au réseau pré-entraîné. Ensuite nous entraînons l'intégralité du réseau ainsi obtenu.
    	
-   	\section{About this design}
-   	This is a simple report template with the UCT logo. Feel free to use/modify it to suit your needs. Variables that need to be altered have been commented to make modifications easier. For example if you need to change the university logo, look for the comment \texttt{\% University Logo} in this file and then make appropriate modifications in that line.
+   	\section{Résultats}
    	
-   	A Table of Contents and a bibliography have also been implemented. To add entries to your bibliography, simply edit \texttt{biblist.bib} in the root folder and then use the \texttt{\textbackslash cite\{\ldots\}} command in \texttt{main.tex} \cite{bibtex}. The Table of Contents will be updated automatically.
+   	\section{Améliorations possibles}
    	
-   	I hope that you find this template both visually appealing and useful. \\
-   	
-   	\hspace{1 cm}--- Linus
+   		Le \textit{dataset} actuel n'est pas de très bonne qualité. En effet, celui-ci ayant été récolté en décomposant des vidéos image par image, cela implique que les données d'entraînement sont fortement liées les unes aux autres de par leur ressemblance. Pour pallier à ce problème, nous aurions pû faire de l'augmentation de données sur le \textit{dataset}. Cela consiste à appliquer une modification aléatoire à l'image (zoom, rotation, filtre, ...) avant de l'utiliser pour entraîner le réseau de neurones. Cela permettrait de "casser" la ressemblance entre deux images et ainsi d'améliorer artificiellement la qualité du \textit{dataset}.
    	
    	\newpage
    	%\bibliographystyle{plain}
