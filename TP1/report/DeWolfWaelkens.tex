@@ -10,6 +10,8 @@
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
+\usepackage{caption}
+\usepackage{subcaption}
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
 \title{Détection des feu de forets avec un réseau de neurones embarqué}                             % Title
@@ -74,9 +76,33 @@
    	
    	\section{Résultats}
    	
+   		Nous pouvons voir d'après la Figure \ref{fig:res} que notre réseau de neurones a une très bonne précision ainsi qu'une très faible erreur.
+   		
+   		Cependant, en pratique, notre réseau à tendance à classer les images dans la catégorie \texttt{fire}. Cela est étonnant car, comme discuté ci-dessous, la distribution des données nous laisser penser que ce phénomène arriverait avec la catégorie \texttt{start\_fire}.
+   		
+   		\begin{figure}[h]
+   			\centering
+   			\begin{subfigure}{.4\textwidth}
+   				\centering
+   				\includegraphics[width=.9\textwidth]{acc}
+   				\caption{Précision à l'entraînement (\textit{acc}) et à la validation (\textit{val\_acc})}
+   			\end{subfigure}%				
+   			\begin{subfigure}{.4\textwidth}
+   				\centering
+   				\includegraphics[width=.9\textwidth]{loss}
+   				\caption{Erreur à l'entraînement (\textit{loss}) et à la validation (\textit{val\_loss})}
+   			\end{subfigure}
+   			
+   			\caption{Résultats obtenus par notre réseau de neurones en fonction des \textit{epochs} d'apprentissage}
+   			\label{fig:res}
+   		\end{figure}
+   		
+   	
    	\section{Améliorations possibles}
    	
-   		Le \textit{dataset} actuel n'est pas de très bonne qualité. En effet, celui-ci ayant été récolté en décomposant des vidéos image par image, cela implique que les données d'entraînement sont fortement liées les unes aux autres de par leur ressemblance. Pour pallier à ce problème, nous aurions pû faire de l'augmentation de données sur le \textit{dataset}. Cela consiste à appliquer une modification aléatoire à l'image (zoom, rotation, filtre, ...) avant de l'utiliser pour entraîner le réseau de neurones. Cela permettrait de "casser" la ressemblance entre deux images et ainsi d'améliorer artificiellement la qualité du \textit{dataset}.
+   		Le \textit{dataset} actuel n'est pas de très bonne qualité. En effet, celui-ci ayant été récolté en décomposant des vidéos image par image, cela implique que les données d'entraînement sont fortement liées les unes aux autres de par leur ressemblance. Pour pallier à ce problème, nous aurions pû faire de l'augmentation de données sur le \textit{dataset}. Cela consiste à appliquer une modification aléatoire à l'image (zoom, rotation, filtre, ...) avant de l'utiliser pour entraîner le réseau de neurones. Cela permettrait de "casser" la ressemblance entre deux images et ainsi d'améliorer artificiellement la qualité du \textit{dataset}.\\
+   		
+   		De plus, les trois classes sont inégalement représentées dans le \textit{dataset} ce qui favorise \textit{l'orverfitting}. En effet, les classes \texttt{fire, start\_fire} et \texttt{no\_fire} sont respectivement représentées par $2447$, $11688$ et $2582$ éléments. Le réseau peut donc facilement une précision de $\pm70\%$ en classant toutes les images dans la catégorie \texttt{start\_fire}. Pour rémedier à cela, on pourrait soit récupérer des images entrant dans les deux classes les moins représentées soit utilisé l'augmentation de données mentionnée ci-dessus pour équilibrer la distribution des images parmi ces classes.
    	
    	\newpage
    	%\bibliographystyle{plain}
