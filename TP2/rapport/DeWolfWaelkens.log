@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.4.22)  28 OCT 2018 15:22
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.4.22)  29 OCT 2018 22:03
  restricted system commands enabled.
 **DeWolfWaelkens.tex
 (./DeWolfWaelkens.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.301 seconds
+luaotfload | main : initialization completed in 0.677 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -468,18 +468,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
-[1] (./DeWolfWaelkens.aux))
+[1]
+<images/pred.png, id=19, 485.815pt x 333.245pt>
+File: images/pred.png Graphic file (type png)
+<use images/pred.png>
+Package luatex.def Info: images/pred.png  used on input line 88.
+(luatex.def)             Requested size: 213.71576pt x 146.59773pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
+
+ []
+
+[2<./images/pred.png>] (./DeWolfWaelkens.aux))
 
 Here is how much of LuaTeX's memory you used:
- 5438 strings out of 494480
+ 5459 strings out of 494480
  100000,184870 words of node,token memory allocated
- 11354 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 6 glue, 1 kern, 1 penalty, 1741 glyph, 187 attribut
-e, 53 glue_spec, 32 attribute_list, 1 write nodes
-   avail lists: 1:1,2:327,3:45,4:14,5:52,6:1795,7:390,8:7,9:69,10:9,11:184
- 9277 multiletter control sequences out of 65536+600000
+ 20140 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 6 glue, 1 kern, 1 penalty, 3182 glyph, 247 attribut
+e, 53 glue_spec, 42 attribute_list, 1 write nodes
+   avail lists: 1:1,2:397,3:46,4:14,5:49,6:1546,7:379,8:11,9:76,10:11,11:181
+ 9285 multiletter control sequences out of 65536+600000
  46 fonts using 2912471 bytes
- 41i,10n,43p,508b,244s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 41i,10n,43p,511b,370s stack positions out of 5000i,500n,10000p,200000b,100000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2017/texmf-dist/f
@@ -488,10 +499,10 @@ onts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
 /lmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr12.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/
 texlive/2017/texmf-dist/fonts/type1/public/lm/lmri12.pfb>
-Output written on DeWolfWaelkens.pdf (2 pages, 190738 bytes).
+Output written on DeWolfWaelkens.pdf (3 pages, 417752 bytes).
 
-PDF statistics: 46 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+PDF statistics: 51 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
