@@ -37,19 +37,22 @@ class ValueIterationAgent(ValueEstimationAgent):
     self.iterations = iterations
     self.values = util.Counter() # A Counter is a dict with default 0
     self.best_actions = {}
+    for state in self.mdp.getStates():
+        self.best_actions[state] = None
 
     for i in range(self.iterations):
         next_values = self.values.copy()
         for s in self.mdp.getStates():
-            best_action = None
-            best_score = -sys.float_info.max
-            for a in self.mdp.getPossibleActions(s):
-                e = self.getQValue(s, a)
-                if e > best_score:
-                    best_score = e
-                    best_action = a
-            self.best_actions[s] = best_action
-            next_values[s] = best_score
+            if not self.mdp.isTerminal(s):
+                best_action = None
+                best_score = -sys.float_info.max
+                for a in self.mdp.getPossibleActions(s):
+                    e = self.getQValue(s, a)
+                    if e > best_score:
+                        best_score = e
+                        best_action = a
+                self.best_actions[s] = best_action
+                next_values[s] = best_score
         self.values = next_values
 
   def getValue(self, state):
@@ -68,6 +71,7 @@ class ValueIterationAgent(ValueEstimationAgent):
       to derive it on the fly.
     """
     sum_ = 0
+
     for s_prime, t in self.mdp.getTransitionStatesAndProbs(state, action):
         r = self.mdp.getReward(state, action, s_prime)
         sum_ += t * (r + self.discount*self.values[s_prime])
