@@ -10,7 +10,7 @@ from game import *
 from learningAgents import ReinforcementAgent
 from featureExtractors import *
 
-import random,util,math
+import random,util,math,sys
 
 class QLearningAgent(ReinforcementAgent):
   """
@@ -36,6 +36,8 @@ class QLearningAgent(ReinforcementAgent):
   def __init__(self, **args):
     "You can initialize Q-values here..."
     ReinforcementAgent.__init__(self, **args)
+    self.qvalues = util.Counter()
+    self.actions = {}
 
     "*** YOUR CODE HERE ***"
 
@@ -46,7 +48,7 @@ class QLearningAgent(ReinforcementAgent):
       a state or (state,action) tuple
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    return self.qvalues[(state, action)]
 
 
   def getValue(self, state):
@@ -57,7 +59,17 @@ class QLearningAgent(ReinforcementAgent):
       terminal state, you should return a value of 0.0.
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    max_value = -sys.maxsize
+    best_action = None
+    for action in self.getLegalActions(state):
+        current_value = self.getQValue(state, action)
+        if max_value < current_value:
+            max_value = current_value
+            best_action = action
+    self.actions[state] = best_action
+    if len(self.getLegalActions(state))==0:
+        max_value = 0
+    return max_value
 
   def getPolicy(self, state):
     """
@@ -66,7 +78,8 @@ class QLearningAgent(ReinforcementAgent):
       you should return None.
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    self.getValue(state)
+    return self.actions[state]
 
   def getAction(self, state):
     """
@@ -83,8 +96,13 @@ class QLearningAgent(ReinforcementAgent):
     legalActions = self.getLegalActions(state)
     action = None
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
-
+    if util.flipCoin(self.epsilon):
+        # Agent take the expected actions
+        action = self.getPolicy(state)
+    elif len(legalActions)>0:
+        # Random action taken
+        action = random.choice(legalActions)
+    # else: action remains None
     return action
 
   def update(self, state, action, nextState, reward):
@@ -97,7 +115,9 @@ class QLearningAgent(ReinforcementAgent):
       it will be called on your behalf
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    delta = (reward + self.discount * self.getValue(nextState)) - self.getQValue(state, action)
+    self.qvalues[(state, action)] += self.alpha * delta
+    return self.qvalues[(state, action)]
 
 class PacmanQAgent(QLearningAgent):
   "Exactly the same as QLearningAgent, but with different default parameters"
