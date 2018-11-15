@@ -68,7 +68,7 @@ class QLearningAgent(ReinforcementAgent):
             best_action = action
     self.actions[state] = best_action
     if len(self.getLegalActions(state))==0:
-        max_value = 0
+        max_value = 0.0
     return max_value
 
   def getPolicy(self, state):
@@ -97,11 +97,11 @@ class QLearningAgent(ReinforcementAgent):
     action = None
     "*** YOUR CODE HERE ***"
     if util.flipCoin(self.epsilon):
-        # Agent take the expected actions
-        action = self.getPolicy(state)
-    elif len(legalActions)>0:
         # Random action taken
         action = random.choice(legalActions)
+    elif len(legalActions)>0:
+        # Agent take the expected actions
+        action = self.getPolicy(state)
     # else: action remains None
     return action
 
@@ -116,8 +116,7 @@ class QLearningAgent(ReinforcementAgent):
     """
     "*** YOUR CODE HERE ***"
     delta = (reward + self.discount * self.getValue(nextState)) - self.getQValue(state, action)
-    self.qvalues[(state, action)] += self.alpha * delta
-    return self.qvalues[(state, action)]
+    self.qvalues[(state, action)] = self.qvalues[(state, action)] + self.alpha * delta
 
 class PacmanQAgent(QLearningAgent):
   "Exactly the same as QLearningAgent, but with different default parameters"
@@ -165,6 +164,8 @@ class ApproximateQAgent(PacmanQAgent):
 
     # You might want to initialize weights here.
     "*** YOUR CODE HERE ***"
+    self.weights = util.Counter()
+    self.f = self.featExtractor.getFeatures
 
   def getQValue(self, state, action):
     """
@@ -172,14 +173,17 @@ class ApproximateQAgent(PacmanQAgent):
       where * is the dotProduct operator
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    features = self.f(state, action)
+    return self.weights * features
 
   def update(self, state, action, nextState, reward):
     """
        Should update your weights based on transition
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    delta = (reward + self.discount * self.getValue(nextState)) - self.getQValue(state, action)
+    for feature, fi in self.f(state, action).items():
+        self.weights[feature] = self.weights[feature] + self.alpha * delta * fi
 
   def final(self, state):
     "Called at the end of each game."
