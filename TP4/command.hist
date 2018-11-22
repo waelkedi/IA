@@ -1,0 +1,9 @@
+Lancer le docker:
+    xhost +
+    docker run -it --env="DISPLAY" -v "$(pwd)/workspace-buildoutput:/root/ros:rw" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" robot
+Ouvrir un terminal:
+    xterm &
+Dans terminal xterm:
+    roscore
+dans un autre terminal xterm:
+    rosrun rviz rviz
