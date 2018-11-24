@@ -61,12 +61,14 @@ class QLearningAgent(ReinforcementAgent):
     "*** YOUR CODE HERE ***"
     max_value = -sys.maxsize
     best_action = None
+    # We compute the best action to take for each state
     for action in self.getLegalActions(state):
         current_value = self.getQValue(state, action)
         if max_value < current_value:
             max_value = current_value
             best_action = action
     self.actions[state] = best_action
+    # If there is no legal actions, we return 0
     if len(self.getLegalActions(state))==0:
         max_value = 0.0
     return max_value
@@ -78,6 +80,7 @@ class QLearningAgent(ReinforcementAgent):
       you should return None.
     """
     "*** YOUR CODE HERE ***"
+    # This call to getValue ensure that the "actions" dict is up-to-date
     self.getValue(state)
     return self.actions[state]
 
@@ -102,7 +105,7 @@ class QLearningAgent(ReinforcementAgent):
     elif len(legalActions)>0:
         # Agent take the expected actions
         action = self.getPolicy(state)
-    # else: action remains None
+    # else: there is no legal actions so action remains None
     return action
 
   def update(self, state, action, nextState, reward):
@@ -115,6 +118,7 @@ class QLearningAgent(ReinforcementAgent):
       it will be called on your behalf
     """
     "*** YOUR CODE HERE ***"
+    # We apply the formula of the notes
     delta = (reward + self.discount * self.getValue(nextState)) - self.getQValue(state, action)
     self.qvalues[(state, action)] = self.qvalues[(state, action)] + self.alpha * delta
 
@@ -165,6 +169,7 @@ class ApproximateQAgent(PacmanQAgent):
     # You might want to initialize weights here.
     "*** YOUR CODE HERE ***"
     self.weights = util.Counter()
+    # We use "f" as an alias for "featExtractor.getFeatures"
     self.f = self.featExtractor.getFeatures
 
   def getQValue(self, state, action):
@@ -173,6 +178,8 @@ class ApproximateQAgent(PacmanQAgent):
       where * is the dotProduct operator
     """
     "*** YOUR CODE HERE ***"
+    # As "weights" and "features" are Counter objects,
+    # we just have to multiple them in order to obtain the dot product
     features = self.f(state, action)
     return self.weights * features
 
@@ -181,6 +188,7 @@ class ApproximateQAgent(PacmanQAgent):
        Should update your weights based on transition
     """
     "*** YOUR CODE HERE ***"
+    # We use the formula of the notes
     delta = (reward + self.discount * self.getValue(nextState)) - self.getQValue(state, action)
     for feature, fi in self.f(state, action).items():
         self.weights[feature] = self.weights[feature] + self.alpha * delta * fi
