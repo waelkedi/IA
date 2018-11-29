@@ -1,0 +1,8 @@
+prefix=/root/ros/catkin_ws/devel
+
+Name: uafr
+Description: Description of uafr
+Version: 0.0.42
+Cflags: 
+Libs: -L/root/ros/catkin_ws/devel/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/root/ros/catkin_ws/devel
+
+Name: turtlebot3_gazebo
+Description: Description of turtlebot3_gazebo
+Version: 1.1.0
+Cflags: -I/root/ros/catkin_ws/src/turtlebot3_simulation/turtlebot3_gazebo/include
+Libs: -L/root/ros/catkin_ws/devel/lib 
+Requires: roscpp std_msgs sensor_msgs geometry_msgs nav_msgs tf gazebo_ros

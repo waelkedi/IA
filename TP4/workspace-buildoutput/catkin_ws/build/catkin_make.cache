@@ -1,0 +1,2 @@
+beginner_tutorials:darknet_ros/darknet_ros:darknet_ros/darknet_ros_msgs:turtlebot3/turtlebot3:turtlebot3/turtlebot3_bringup:turtlebot3/turtlebot3_description:turtlebot3/turtlebot3_example:turtlebot3/turtlebot3_navigation:turtlebot3/turtlebot3_slam:turtlebot3/turtlebot3_teleop:turtlebot3_msgs:turtlebot3_simulation/turtlebot3_fake:turtlebot3_simulation/turtlebot3_gazebo:turtlebot3_simulation/turtlebot3_simulations:uafr
+-DCATKIN_DEVEL_PREFIX=/root/ros/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/root/ros/catkin_ws/install -G Unix Makefiles

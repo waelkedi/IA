@@ -1,0 +1,45 @@
+## Terminal 1.
+# Create a ROS master.
+cd ros/
+source rosentrypoint.bash
+roscore
+
+## Terminal 2.
+# Play a bag file.
+cd ros/
+source rosentrypoint.bash
+rosbag play --pause 2018-11-21-16-47-03.bag
+
+## Terminal 3.
+# Create a catkin Package.
+cd ros/
+source rosentrypoint.bash
+cd catkin_ws/src
+catkin_create_pkg beginner_tutorials std_msgs rospy roscpp --rosdistro hydro
+
+# Change directory into the 'beginner_tutorials' package.
+roscd beginner_tutorials
+
+# Run the talker and the listener.
+mkdir scripts
+cd scripts
+
+# Create the publisher node.
+wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
+chmod +x talker.py
+# Modify this script.
+
+# Create the subscriber node.
+wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
+chmod +x listener.py
+# Modify this script.
+
+# Run the publisher node in the current terminal.
+rosrun beginner_tutorials talker.py
+
+## Terminal 4.
+# Run the subscriber node in a new terminal.
+cd ros
+source rosentrypoint.bash
+roscd beginner_tutorials/scripts/
+rosrun beginner_tutorials listener.py

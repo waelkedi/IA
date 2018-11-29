@@ -1,0 +1,9 @@
+- git:
+    local-name: turtlebot3
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3.git
+- git:
+    local-name: turtlebot3_msgs
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+- git:
+    local-name: turtlebot3_simulation
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
