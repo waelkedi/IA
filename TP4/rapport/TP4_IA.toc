@@ -1,0 +1,3 @@
+\babel@toc {french}{}
+\contentsline {section}{\numberline {1}Configuration de \textit {Cartographer}}{2}
+\contentsline {section}{\numberline {2}Localisation des objets}{2}
