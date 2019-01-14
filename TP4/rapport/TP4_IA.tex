@@ -64,14 +64,31 @@
    	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    	
    	\section{Configuration de \textit{Cartographer}}
-   	
-   		\begin{figure}[h]
+	
+	
+		La configuration de cartographer est réalisée via son fichier de configuration : uafr_cartographer.lua. Dans ce fichier nous avions modifier trois paramêtres :
+		
+			\begin{itemize}
+			
+			\item num_accumulated_range_data définit le nombre de messages requis pour reconstruire un scan complet (une image de l'espace autour du robot en temps t) en augmentant cette variable nous augmentons la précision d'un scan.
+			\item num_subdivisions_per_laser_scan défini le nombre de points utiliser par scan. C'est point sont ensuite utilisées pour reconstituer la carte. Augmenter ce nombre de points permet à cartographer de mieux reconstituer une sous-carte.
+			The size of submaps is configured through
+			\item TRAJECTORY_BUILDER_2D.submaps.num_range_data conrespond à la taille de sous carte. Ce paramètre doit être plus grand que num_accumulated_range_data.
+			
+			\end{itemize}
+			
+		Augmenter ces paramètres permet augmenter la qualité de la carte calculée. Nous avions initialisé ses trois paramètres à 200. Et nous avions obtenu le résultat suivant :
+		
+		\begin{figure}[h]
    			\begin{center}
    				\includegraphics[width=0.75\linewidth]{map}
    			\end{center}
    			\caption{Carte obtenue grâce à \textit{Cartographer}}
    			\label{fig:map}
    		\end{figure}
+
+		Ce résultat est assez bon. Chaque pièce est bien reconstituer, modulo les meubles qui permettent pas de réaliser une représentation complète de chacune des pièces. Aucune pièce chevauche une autre. De plus les mur et les angles sont bien droit. Augmenter au-delà permutera pas d'améliorer sensiblement le résultat et risque de causée de la latence à cause de calculs inutiles 
+   	
    
    	\section{Localisation des objets}
    	
