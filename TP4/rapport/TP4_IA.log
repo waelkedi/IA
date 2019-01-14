@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.22)  14 JAN 2019 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.22)  14 JAN 2019 16:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -332,15 +332,30 @@ Overfull \hbox (46.08237pt too wide) in paragraph at lines 103--122
  [] 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
 [2] (./TP4_IA.aux) ) 
 Here is how much of TeX's memory you used:
- 4749 strings out of 492982
- 63471 string characters out of 6132512
- 134513 words of memory out of 5000000
- 8225 multiletter control sequences out of 15000+600000
+ 4751 strings out of 492982
+ 63494 string characters out of 6132512
+ 136513 words of memory out of 5000000
+ 8227 multiletter control sequences out of 15000+600000
  14828 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,43p,374b,571s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,43p,537b,571s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-supe
 r/cm-super-t1.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-sup
 er/sfbi1440.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super
@@ -353,7 +368,7 @@ pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
 b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></
 usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on TP4_IA.pdf (3 pages, 562740 bytes).
+Output written on TP4_IA.pdf (3 pages, 561150 bytes).
 PDF statistics:
  64 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream

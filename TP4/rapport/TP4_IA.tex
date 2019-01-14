@@ -51,7 +51,7 @@
    		\end{minipage}~
    		\begin{minipage}{0.4\textwidth}
    			\begin{flushright} \large
-   				\emph{Matricule: 151085}                                  % Your Student Number
+   				\emph{}                                  % Your Student Number
    			\end{flushright}
    		\end{minipage}\\[2 cm]
    		
@@ -126,14 +126,19 @@
    	
    		\subsection{Discussion sur les résultats}
    		
-   		Grâce à la Table \ref{tab:res}, nous pouvons voir que nos résultats sont assez mauvais par rapport aux résultats attendus car nous ne détectons pas le bon nombre d'objets. Nous dressons donc une liste non-exhaustive de tous les facteurs qui pourraient être responsables.
+   		Grâce à la Table \ref{tab:res}, nous pouvons voir que nos résultats sont assez mauvais par rapport aux résultats attendus car nous ne détectons pas le bon nombre d'objets. Nous dressons donc une liste non-exhaustive de tous les facteurs qui pourraient être responsables.\\
    		
-%   		todo: calcul des positions avec 2 points
-   		
-%   			todo: mauvais clustering
+%   			todo: position via 2 positions
 
-%			todo: distance de l'objet pas précis
-   		
+		Pour retrouver la position du robot précédant la détection de l'objet, nous prenons la position du robot durant la détection précédente d'un objet. Cela implique que nous prenons éventuellement la position du robot pendant la détection d'un autre objet. Cela peut donc causer la création de \textit{clusters} artificiel.
+		
+		Une solution pour régler ce problème est de tester si l'objet précédemment détecté est le même que celui en cours de détection. On pourrait notamment faire ceci en se basant sur la technique de \textit{clustering} que nous avons utilisé.
+		
+		Une autre solution serait de ne plus prendre la position du robot pendant la détection de l'objet précédent mais de sélectionner la position du robot juste avant de détecter l'objet. Cette solution est selon nous la plus logique à appliquer.\\
+
+		Notre technique de \textit{clustering} est très (trop ?) simple. Dès lors, on peut se demander si d'autres techniques donneraient de meilleurs résultats. Effectivement, chaque position que nous trouvons découle de la formation d'un \textit{cluster}. Un problème à ce niveau aurait donc des conséquences directes sur nos résultats au niveau du nombre d'objets détectés.\\
+
+   		Le robot nous fourni la distance à laquelle se trouve ce qu'il voit. Cependant, il arrive qu'il détecte plusieurs objets sur la même image. Dans ce cas nous utilisons la même distance sur tous ces objets ce qui implique que tous les objets présents sur une même image auront d'office la même position. Or, cela est loin d'être vrai. Ce problème influe donc sur la position des objets détectés, ce qui a une incidence sur les \textit{clusters} formés et donc sur les résultats finaux.
    
    	%\bibliographystyle{plain}
    	%\bibliography{biblist}
